@@ -6,41 +6,48 @@
 
 int main()
 {
-    createGrid(arrGrid, size);
-    showGrid(arrGrid, size);
+    char** arrGrid = createGrid(sizeGrid);
+    fillGrid(arrGrid, sizeGrid, empty);
+    arrGrid[Row][Col] = symbol;
 
-    selectMenu(arrWASD, sizeof(arrWASD) / sizeof(arrWASD[0]), "WASD", ind);
-    printMenu(arrWASD, sizeof(arrWASD) / sizeof(arrWASD[0]), "WASD", ind);
+    do {
+        showGrid(arrGrid, sizeGrid, empty);
+        printMenu(arrWASD, sizeof(arrWASD) / sizeof(arrWASD[0]), "WASD", ind);
+        indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
+        system("CLS");
 
-    switch (ind)
-    {
-    case W:
-        Row++;
-        break;
-    case A:
-        Col--;
-        break;
-    case S:
-        Row--;
-        break;
-    case D:
-        Col++;
-        break;
-    default:
-        exit(0);
-    }
+        switch (ind)
+        {
+        case W:
+            arrGrid[Row][Col] = empty;
+            Row++;
+            arrGrid[Row][Col] = symbol;
+            break;
+        case A:
+            arrGrid[Row][Col] = empty;
+            Col--;
+            arrGrid[Row][Col] = symbol;
+            break;
+        case S:
+            arrGrid[Row][Col] = empty;
+            Row--;
+            arrGrid[Row][Col] = symbol;
+            break;
+        case D:
+            arrGrid[Row][Col] = empty;
+            Col++;
+            arrGrid[Row][Col] = symbol;
+            break;
+        default:
+            exit(0);
+        }
 
-    //do {
-
-    //} while (true);
+    } while (true);
   
-
-    deleteGrid(arrGrid, size);
+    deleteGrid(arrGrid, sizeGrid);
     return 0;
 }
 ;
-//const int size = 5;
-//char arr[size][size]{};
 
 //Point2D p2d;
 //arr[p2d.getX()][p2d.getY()] = 'x';

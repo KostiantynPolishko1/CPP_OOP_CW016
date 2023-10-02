@@ -6,20 +6,29 @@
 #include <iostream>
 using std::cout;
 
-void createGrid(char** arr, short size){
-    arr = new char* [size];
+char** createGrid(short size){
+    char** arr = new char* [size];
     for (short i = 0; i < size; i++)
         arr[i] = new char[size];
+
+    return arr;
 }
 ;
-void showGrid(char **arr, int size) {
+void fillGrid(char** arr, short size, char empty = ' ') {
+    for (short i = 0; i < size; i++)
+        for (short j = 0; j < size; j++)
+            arr[i][j] = empty;
+}
+;
+void showGrid(char **arr, int size, char empty) {
     for (short i = 0; i < size; i++) {
         for (short j = 0; j < size; j++) {
-            if (arr[i][j]) {
+            if (arr[i][j] !=  empty ) 
+            {
                 cout << arr[i][j] << " ";
                 continue;
             }
-            cout << "-" << " ";
+            cout << empty << " ";
         }
         cout << "\n";
     }

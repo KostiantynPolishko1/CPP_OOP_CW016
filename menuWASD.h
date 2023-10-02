@@ -19,8 +19,10 @@ short indexMenu(short& indMenu, const short size) {
 
     while (true) {
 
-        if (direct == '\n')
-            return static_cast<int>(direct);
+        if (direct == 'e' || direct == 'E'){
+            indMenu = 4;
+            cout << "\n\tEXIT\n";
+        }
         else if (direct == 'w' || direct == 'W')
             indMenu = 0;
         else if (direct == 'a' || direct == 'A')

@@ -11,8 +11,8 @@ enum WASD {
     EXIT
 }
 ;
-short ind(0), Row(0), Col(0), size(10);
-char** arrGrid;
-std::string arrWASD[] = { "w - Down", "a - Left", "s - Up", "d - Right", "EXIT" };
+short ind(0), Row(0), Col(0), sizeGrid(10);
+char symbol('x'), empty('-');
+std::string arrWASD[] = { "w - Down", "a - Left", "s - Up", "d - Right", "e - EXIT" };
 
 #endif
