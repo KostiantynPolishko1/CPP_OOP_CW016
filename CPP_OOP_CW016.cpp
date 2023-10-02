@@ -8,6 +8,11 @@ int main()
 {
     char** arrGrid = createGrid(sizeGrid);
     fillGrid(arrGrid, sizeGrid, empty);
+
+    Point2D p2d;
+    Row = p2d.getRow();
+    Col = p2d.getCol();
+
     arrGrid[Row][Col] = symbol;
 
     do {
@@ -16,7 +21,13 @@ int main()
         indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
         system("CLS");
 
-        stepByGrid(ind, arrGrid, sizeGrid, Row, Col, symbol, empty);
+        if(!stepByGrid(ind, arrGrid, sizeGrid, Row, Col, symbol, empty))
+            continue;
+
+        p2d.setRow(Row);
+        p2d.setCol(Col);
+
+        Point2D p2d_copy(p2d);
 
     } while (true);
 
@@ -24,9 +35,6 @@ int main()
     return 0;
 }
 ;
-
-//Point2D p2d;
-//arr[p2d.getX()][p2d.getY()] = 'x';
 
 //p2d.setX(1);
 //p2d.setY(1);

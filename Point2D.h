@@ -6,19 +6,19 @@
 class Point2D final
 {
 private:
-	int _x;
-	int _y;
+	short _row;
+	short _col;
 
 public:
-	Point2D() : _x(0), _y(0) {}
-	Point2D(int x, int y) : _x(x), _y(y) {}
-	Point2D(const Point2D &p2D) : _x(p2D._x), _y(p2D._y) {}
+	Point2D() : _row(0), _col(0) {}
+	Point2D(short Row, short Col) : _row(Row), _col(Col) {}
+	Point2D(const Point2D &p2D) : _row(p2D._row), _col(p2D._col) {}
 
-	int getX() const;
-	int getY() const;
+	short getRow() const;
+	short getCol() const;
 
-	inline void setX(int x);
-	inline void setY(int y);
+	void setRow(short Row);
+	void setCol(short Col);
 }
 ;
 #endif

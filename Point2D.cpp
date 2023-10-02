@@ -1,18 +1,18 @@
 #include "Point2D.h"
 
-int Point2D::getX() const {
-	return _x;
+short Point2D::getRow() const {
+	return _row;
 }
 ;
-int Point2D::getY() const {
-	return _y;
+short Point2D::getCol() const {
+	return _col;
 }
 ;
-void Point2D::setX(int x) {
-	_x = x;
+void Point2D::setRow(short Row) {
+	_row = Row;
 }
 ;
-void Point2D::setY(int y) {
-	_y = y;
+void Point2D::setCol(short Col) {
+	_col = Col;
 }
 ;

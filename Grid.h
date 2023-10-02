@@ -58,7 +58,7 @@ inline bool checkGrid(short value, short sizeGrid){
     return false;
 }
 ;
-void stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
+bool stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
 const char symbol, const char empty)
 {
 
@@ -67,39 +67,39 @@ const char symbol, const char empty)
 	case W:
 		if (checkGrid(Row + 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
-			break;
+			return false;
 		}
 		arrGrid[Row][Col] = empty;
 		Row++;
 		arrGrid[Row][Col] = symbol;
-		break;
+		return true;
 	case A:
 		if (checkGrid(Col - 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
-			break;
+			return false;
 		}
 		arrGrid[Row][Col] = empty;
 		Col--;
 		arrGrid[Row][Col] = symbol;
-		break;
+		return true;
 	case S:
 		if (checkGrid(Row - 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
-			break;
+			return false;
 		}
 		arrGrid[Row][Col] = empty;
 		Row--;
 		arrGrid[Row][Col] = symbol;
-		break;
+		return true;
 	case D:
 		if (checkGrid(Col + 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
-			break;
+			return false;
 		}
 		arrGrid[Row][Col] = empty;
 		Col++;
 		arrGrid[Row][Col] = symbol;
-		break;
+		return true;
 	default:
 		cout << "\n\tEXIT\n";
 		exit(0);
