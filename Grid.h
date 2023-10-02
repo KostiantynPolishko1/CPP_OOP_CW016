@@ -6,6 +6,14 @@
 #include <iostream>
 using std::cout;
 
+enum WASD {
+    W,
+    A,
+    S,
+    D,
+    EXIT
+}
+;
 char** createGrid(short size){
     char** arr = new char* [size];
     for (short i = 0; i < size; i++)
@@ -41,6 +49,61 @@ void deleteGrid(char** arr, short size) {
     }
     delete[] arr;
     arr = nullptr;
+}
+;
+inline bool checkGrid(short value, short sizeGrid){
+
+    if (value >= sizeGrid || value < 0)
+        return true;
+    return false;
+}
+;
+void stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
+const char symbol, const char empty)
+{
+
+	switch (ind) 
+	{
+	case W:
+		if (checkGrid(Row + 1, sizeGrid)) {
+			cout << "\n\tERROR!\n";
+			break;
+		}
+		arrGrid[Row][Col] = empty;
+		Row++;
+		arrGrid[Row][Col] = symbol;
+		break;
+	case A:
+		if (checkGrid(Col - 1, sizeGrid)) {
+			cout << "\n\tERROR!\n";
+			break;
+		}
+		arrGrid[Row][Col] = empty;
+		Col--;
+		arrGrid[Row][Col] = symbol;
+		break;
+	case S:
+		if (checkGrid(Row - 1, sizeGrid)) {
+			cout << "\n\tERROR!\n";
+			break;
+		}
+		arrGrid[Row][Col] = empty;
+		Row--;
+		arrGrid[Row][Col] = symbol;
+		break;
+	case D:
+		if (checkGrid(Col + 1, sizeGrid)) {
+			cout << "\n\tERROR!\n";
+			break;
+		}
+		arrGrid[Row][Col] = empty;
+		Col++;
+		arrGrid[Row][Col] = symbol;
+		break;
+	default:
+		cout << "\n\tEXIT\n";
+		exit(0);
+	}
 }
 ;
 #endif

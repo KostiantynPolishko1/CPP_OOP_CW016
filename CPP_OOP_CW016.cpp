@@ -16,34 +16,10 @@ int main()
         indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
         system("CLS");
 
-        switch (ind)
-        {
-        case W:
-            arrGrid[Row][Col] = empty;
-            Row++;
-            arrGrid[Row][Col] = symbol;
-            break;
-        case A:
-            arrGrid[Row][Col] = empty;
-            Col--;
-            arrGrid[Row][Col] = symbol;
-            break;
-        case S:
-            arrGrid[Row][Col] = empty;
-            Row--;
-            arrGrid[Row][Col] = symbol;
-            break;
-        case D:
-            arrGrid[Row][Col] = empty;
-            Col++;
-            arrGrid[Row][Col] = symbol;
-            break;
-        default:
-            exit(0);
-        }
+        stepByGrid(ind, arrGrid, sizeGrid, Row, Col, symbol, empty);
 
     } while (true);
-  
+
     deleteGrid(arrGrid, sizeGrid);
     return 0;
 }
