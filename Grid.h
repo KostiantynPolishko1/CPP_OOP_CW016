@@ -4,6 +4,7 @@
 #define OUTPUT_H
 
 #include <iostream>
+#include <time.h>
 using std::cout;
 
 enum WASD {
@@ -108,8 +109,13 @@ const char symbol, const char empty, Point2D& p2d)
 		return true;
 	default:
 		cout << "\n\tEXIT\n";
-		exit(0);
+		return true;
 	}
+}
+;
+short randomCell(const short sizeGrid, const short sizeOffset) {
+	srand(time(NULL));
+	return sizeOffset + rand() % (sizeGrid - sizeOffset * 2);
 }
 ;
 #endif
