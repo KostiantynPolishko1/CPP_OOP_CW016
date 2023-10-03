@@ -4,6 +4,7 @@
 #define OUTPUT_H
 
 #include <iostream>
+#include <time.h>
 using std::cout;
 
 enum WASD {
@@ -11,6 +12,7 @@ enum WASD {
     A,
     S,
     D,
+	Z,
     EXIT
 }
 ;
@@ -59,7 +61,7 @@ inline bool checkGrid(short value, short sizeGrid){
 }
 ;
 bool stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
-const char symbol, const char empty)
+const char symbol, const char empty, Point2D& p2d)
 {
 
 	switch (ind) 
@@ -100,10 +102,20 @@ const char symbol, const char empty)
 		Col++;
 		arrGrid[Row][Col] = symbol;
 		return true;
+	case Z:
+		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
+		p2d.decreaseArrRowCol();
+		arrGrid[p2d.getRow()][p2d.getCol()] = symbol;
+		return true;
 	default:
 		cout << "\n\tEXIT\n";
-		exit(0);
+		return true;
 	}
+}
+;
+short randomCell(const short sizeGrid, const short sizeOffset) {
+	srand(time(NULL));
+	return sizeOffset + rand() % (sizeGrid - sizeOffset * 2);
 }
 ;
 #endif

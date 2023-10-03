@@ -11,7 +11,7 @@ short indexMenu(short& indMenu, const short size) {
     short indMin = 0;
     char direct = ' ';
 
-    cout << " w|a|s|d -> ";
+    cout << " w|a|s|d|z -> ";
     direct = cin.get();
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -20,19 +20,21 @@ short indexMenu(short& indMenu, const short size) {
     while (true) {
 
         if (direct == 'e' || direct == 'E')
-            indMenu = 4;
+            indMenu = EXIT;
         else if (direct == 'w' || direct == 'W')
-            indMenu = 0;
+            indMenu = W;
         else if (direct == 'a' || direct == 'A')
-            indMenu = 1;
+            indMenu = A;
         else if (direct == 's' || direct == 'S')
-            indMenu = 2;
+            indMenu = S;
         else if (direct == 'd' || direct == 'D')
-            indMenu = 3;
+            indMenu = D;
+        else if (direct == 'z' || direct == 'Z')
+            indMenu = Z;
         else
         {
             cout << "\n\tERROR!";
-            cout << "\n\t\"w\" - Down, \"a\" - Left, \"s\" - Up: ->, \"d\" - Right, ";
+            cout << "\n\t\"w\" - Down, \"a\" - Left, \"s\" - Up: ->, \"d\" - Right, \"z\" - Undo";
         }
 
         //reload index menu
