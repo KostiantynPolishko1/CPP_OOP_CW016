@@ -12,14 +12,35 @@ private:
 	short** _arrRowCol;
 
 protected:
-	void initArrRowCol();
+	void initArrRowCol(short** arr);
+	void copyArrRowCol(short** arr, short** arr2);
+	void deleteArrRowCol(short** arr);
 
 public:
-	Point2D() : _row(0), _col(0), _count(0) {}
-	Point2D(short Row, short Col) : _row(Row), _col(Col), _count(0) {}
-	Point2D(const Point2D &p2D) : _row(p2D._row), _col(p2D._col), _count(p2D._count) {}
-	~Point2D() 
+	Point2D() : _row(0), _col(0), _count(0)
 	{
+		_arrRowCol = new short* [1];
+		_arrRowCol[0] = new short[2];
+		_arrRowCol[0][0] = _row;
+		_arrRowCol[0][1] = _col;
+	}
+	Point2D(short Row, short Col) : _row(Row), _col(Col), _count(0)
+	{
+		_arrRowCol = new short* [1];
+		_arrRowCol[0] = new short[2];
+		_arrRowCol[0][0] = _row;
+		_arrRowCol[0][1] = _col;
+	}
+
+	Point2D(const Point2D& p2D) : _row(p2D._row), _col(p2D._col), _count(p2D._count)
+	{
+		_arrRowCol = new short* [1];
+		_arrRowCol[0] = new short[2];
+		_arrRowCol[0][0] = p2D._row;
+		_arrRowCol[0][1] = p2D._col;
+	}
+
+	~Point2D() {
 		delete[] _arrRowCol;
 		_arrRowCol = nullptr;
 	}
@@ -30,8 +51,7 @@ public:
 	void setRow(short Row);
 	void setCol(short Col);
 
-	void fillArrRowCol();
-
+	void increaseArrRowCol();
 }
 ;
 #endif

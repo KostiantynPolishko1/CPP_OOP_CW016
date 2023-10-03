@@ -16,22 +16,49 @@ void Point2D::setCol(short Col) {
 	_col = Col;
 }
 ;
-void Point2D::initArrRowCol() {
-	 _count++;
-	_arrRowCol = new short* [_count];
-	short arr[2]{};
+void Point2D::initArrRowCol(short** arr)
+{
+	_count++;
+	arr = new short* [_count];
 
 	for (short i = 0; i < _count; i++)
-		_arrRowCol[i] = arr;
+		arr[i] = new short[2];
 }
 ;
-void Point2D::fillArrRowCol() 
+void Point2D::copyArrRowCol(short** arr, short** arr2)
 {
-	initArrRowCol();
-
-	for (short i = 0; i < _count; i++){
-		_arrRowCol[i][0] = _row;
-		_arrRowCol[i][1] = _col;
+	for (short i = 0; i < _count; i++) {
+		arr[i][0] = arr2[i][0];
+		arr[i][1] = arr2[i][1];
 	}
+}
+;
+void Point2D::deleteArrRowCol(short** arr)
+{
+	for (short i = 0; i < _count; i++) {
+		delete[] arr[i];
+		arr[i] = nullptr;
+	}
+
+	delete[] _arrRowCol;
+	_arrRowCol = nullptr;
+}
+;
+void Point2D::increaseArrRowCol() {
+
+	short** arrTemp = nullptr;
+	initArrRowCol(arrTemp);
+
+	copyArrRowCol(arrTemp, _arrRowCol);
+
+	deleteArrRowCol(_arrRowCol);
+
+	initArrRowCol(_arrRowCol);
+
+	copyArrRowCol(_arrRowCol, arrTemp);
+	_arrRowCol[_count - 1][0] = _row;
+	_arrRowCol[_count - 1][1] = _col;
+
+	deleteArrRowCol(arrTemp);
 }
 ;
