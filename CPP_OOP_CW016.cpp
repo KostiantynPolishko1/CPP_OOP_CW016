@@ -10,6 +10,9 @@ int main()
     fillGrid(arrGrid, sizeGrid, empty);
 
     Point2D p2d;
+    Point2D p2d_copy(p2d);
+    p2d_copy.fillArrRowCol();
+
     Row = p2d.getRow();
     Col = p2d.getCol();
 
@@ -27,7 +30,6 @@ int main()
         p2d.setRow(Row);
         p2d.setCol(Col);
 
-        Point2D p2d_copy(p2d);
 
     } while (true);
 
