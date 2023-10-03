@@ -12,10 +12,10 @@ int main()
     Point2D p2d;
     Point2D p2d_copy(p2d);
 
-    Row = p2d_copy.getRow();
-    Col = p2d_copy.getCol();
+    row = p2d_copy.getRow();
+    col = p2d_copy.getCol();
 
-    arrGrid[Row][Col] = symbol;
+    arrGrid[row][col] = symbol;
 
     do {
         showGrid(arrGrid, sizeGrid, empty);
@@ -23,12 +23,16 @@ int main()
         indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
         system("CLS");
 
-        if (!stepByGrid(ind, arrGrid, sizeGrid, Row, Col, symbol, empty))
+        if (!stepByGrid(ind, arrGrid, sizeGrid, row, col, symbol, empty))
             continue;
 
-        p2d_copy.setRow(Row);
-        p2d_copy.setCol(Col);
-        p2d_copy.increaseArrRowCol();
+        if (ind != Z) {
+            p2d_copy.setRow(row);
+            p2d_copy.setCol(col);
+            p2d_copy.increaseArrRowCol();
+            continue;
+        }
+
 
     } while (true);
 

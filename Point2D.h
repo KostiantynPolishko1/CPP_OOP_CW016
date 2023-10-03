@@ -13,6 +13,7 @@ private:
 
 protected:
 	void incrementCount();
+	void decreaseCount();
 	short** initArrRowCol();
 	void copyArrRowCol(short** arr, short** arr2, short count);
 	void deleteArrRowCol(short** arr, short count);
@@ -26,7 +27,7 @@ public:
 		_arrRowCol[0][0] = _row;
 		_arrRowCol[0][1] = _col;
 	}
-	Point2D(short Row, short Col) : _row(Row), _col(Col), _count(1)
+	Point2D(short row, short col) : _row(row), _col(col), _count(1)
 	{
 		_arrRowCol = new short* [_count];
 		_arrRowCol[0] = new short[2];
@@ -61,6 +62,7 @@ public:
 	void setCol(short Col);
 
 	void increaseArrRowCol();
+	void decreaseArrRowCol();
 }
 ;
 #endif

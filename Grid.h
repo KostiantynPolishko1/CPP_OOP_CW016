@@ -11,6 +11,7 @@ enum WASD {
     A,
     S,
     D,
+	Z,
     EXIT
 }
 ;
@@ -99,6 +100,8 @@ const char symbol, const char empty)
 		arrGrid[Row][Col] = empty;
 		Col++;
 		arrGrid[Row][Col] = symbol;
+		return true;
+	case Z:
 		return true;
 	default:
 		cout << "\n\tEXIT\n";

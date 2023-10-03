@@ -8,16 +8,21 @@ short Point2D::getCol() const {
 	return _col;
 }
 ;
-void Point2D::setRow(short Row) {
-	_row = Row;
+void Point2D::setRow(short row) {
+	_row = row;
 }
 ;
-void Point2D::setCol(short Col) {
-	_col = Col;
+void Point2D::setCol(short col) {
+	_col = col;
 }
 ;
 void Point2D::incrementCount() {
 	_count++;
+}
+;
+void Point2D::decreaseCount() {
+	if (_count)
+		_count--;
 }
 ;
 short** Point2D::initArrRowCol()
@@ -65,5 +70,21 @@ void Point2D::increaseArrRowCol() {
 	_arrRowCol[_count - 1][1] = _col;
 
 	deleteArrRowCol(arrTemp, _count - 1);
+}
+void Point2D::decreaseArrRowCol()
+{
+	decreaseCount();
+
+	short** arrTemp = initArrRowCol();
+
+	copyArrRowCol(arrTemp, _arrRowCol, _count);
+
+	deleteArrRowCol(_arrRowCol, _count + 1);
+
+	_arrRowCol = initArrRowCol();
+
+	copyArrRowCol(_arrRowCol, arrTemp, _count);
+
+	deleteArrRowCol(arrTemp, _count);
 }
 ;

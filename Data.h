@@ -3,8 +3,8 @@
 #ifndef DATA_H
 #define DATA_H
 
-short ind(0), Row(0), Col(0), sizeGrid(10);
+short ind(0), row(0), col(0), sizeGrid(10);
 char symbol('x'), empty('-');
-std::string arrWASD[] = { "w - Down", "a - Left", "s - Up", "d - Right", "e - EXIT" };
+std::string arrWASD[] = { "w - Down", "a - Left", "s - Up", "d - Right", "Z - undo", "e - EXIT" };
 
 #endif
