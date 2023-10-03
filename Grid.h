@@ -60,7 +60,7 @@ inline bool checkGrid(short value, short sizeGrid){
 }
 ;
 bool stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
-const char symbol, const char empty)
+const char symbol, const char empty, Point2D& p2d)
 {
 
 	switch (ind) 
@@ -102,6 +102,9 @@ const char symbol, const char empty)
 		arrGrid[Row][Col] = symbol;
 		return true;
 	case Z:
+		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
+		p2d.decreaseArrRowCol();
+		arrGrid[p2d.getRow()][p2d.getCol()] = symbol;
 		return true;
 	default:
 		cout << "\n\tEXIT\n";

@@ -23,16 +23,14 @@ int main()
         indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
         system("CLS");
 
-        if (!stepByGrid(ind, arrGrid, sizeGrid, row, col, symbol, empty))
+        if (!stepByGrid(ind, arrGrid, sizeGrid, row, col, symbol, empty, p2d_copy))
             continue;
 
         if (ind != Z) {
             p2d_copy.setRow(row);
             p2d_copy.setCol(col);
             p2d_copy.increaseArrRowCol();
-            continue;
         }
-
 
     } while (true);
 

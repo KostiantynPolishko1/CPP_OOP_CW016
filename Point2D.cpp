@@ -1,11 +1,11 @@
 #include "Point2D.h"
 
 short Point2D::getRow() const {
-	return _row;
+	return _arrRowCol[_count-1][0];
 }
 ;
 short Point2D::getCol() const {
-	return _col;
+	return _arrRowCol[_count - 1][1];
 }
 ;
 void Point2D::setRow(short row) {
@@ -21,8 +21,7 @@ void Point2D::incrementCount() {
 }
 ;
 void Point2D::decreaseCount() {
-	if (_count)
-		_count--;
+	_count--;
 }
 ;
 short** Point2D::initArrRowCol()
@@ -73,18 +72,21 @@ void Point2D::increaseArrRowCol() {
 }
 void Point2D::decreaseArrRowCol()
 {
-	decreaseCount();
+	if (_count > 1)
+	{
+		decreaseCount();
 
-	short** arrTemp = initArrRowCol();
+		short** arrTemp = initArrRowCol();
 
-	copyArrRowCol(arrTemp, _arrRowCol, _count);
+		copyArrRowCol(arrTemp, _arrRowCol, _count);
 
-	deleteArrRowCol(_arrRowCol, _count + 1);
+		deleteArrRowCol(_arrRowCol, _count + 1);
 
-	_arrRowCol = initArrRowCol();
+		_arrRowCol = initArrRowCol();
 
-	copyArrRowCol(_arrRowCol, arrTemp, _count);
+		copyArrRowCol(_arrRowCol, arrTemp, _count);
 
-	deleteArrRowCol(arrTemp, _count);
+		deleteArrRowCol(arrTemp, _count);
+	}
 }
 ;
