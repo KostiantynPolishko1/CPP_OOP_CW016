@@ -1,5 +1,20 @@
 #include "Point2D.h"
+#include <iostream>
 
+inline void checkRAM(short** arr) {
+	if (!arr) {
+		throw new std::runtime_error("no RAM available");
+		exit(-1);
+	}
+}
+;
+inline void checkRAM(short* arr) {
+	if (!arr) {
+		throw new std::runtime_error("no RAM available");
+		exit(-1);
+	}
+}
+;
 short Point2D::getRow() const {
 	return _arrRowCol[_count-1][0];
 }
@@ -16,6 +31,14 @@ void Point2D::setCol(short col) {
 	_col = col;
 }
 ;
+short Point2D::getCount() const {
+	return _count;
+}
+;
+short** Point2D::getArrRowCol() const {
+	return _arrRowCol;
+}
+;
 void Point2D::incrementCount() {
 	_count++;
 }
@@ -27,9 +50,12 @@ void Point2D::decreaseCount() {
 short** Point2D::initArrRowCol()
 {
 	short** arr = new short* [_count];
+	checkRAM(arr);
 
-	for (short i = 0; i < _count; i++)
+	for (short i = 0; i < _count; i++) {
 		arr[i] = new short[2];
+		checkRAM(arr[i]);
+	}
 
 	return arr;
 }
@@ -45,12 +71,15 @@ void Point2D::copyArrRowCol(short** arr, short** arr2, short count)
 void Point2D::deleteArrRowCol(short** arr, short count)
 {
 	for (short i = 0; i < count; i++) {
-		delete[] arr[i];
-		arr[i] = nullptr;
+		if (arr[i]) {
+			delete[] arr[i];
+			arr[i] = nullptr;
+		}
 	}
-
-	delete[] arr;
-	arr = nullptr;
+	if (arr) {
+		delete[] arr;
+		arr = nullptr;
+	}
 }
 ;
 void Point2D::increaseArrRowCol() {

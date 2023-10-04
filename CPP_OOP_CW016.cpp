@@ -3,7 +3,6 @@
 #include "menuWASD.h"
 #include "Data.h"
 
-
 int main()
 {
     char** arrGrid = createGrid(sizeGrid);
@@ -44,6 +43,8 @@ int main()
 
     showGrid(arrGrid, sizeGrid, symbolCell);
 
+    p2d.deleteArrRowCol(p2d.getArrRowCol(), p2d.getCount());
+    p2d_copy.deleteArrRowCol(p2d_copy.getArrRowCol(), p2d_copy.getCount());
     deleteGrid(arrGrid, sizeGrid);
 
     return 0;
