@@ -16,6 +16,12 @@ enum WASD {
     EXIT
 }
 ;
+inline bool modifyCell(char** arrGrid, const short &Row, const short &Col, char& step, const char& symbol) {
+	step = arrGrid[Row][Col];
+	arrGrid[Row][Col] = symbol;
+	return true;
+}
+;
 inline void checkRAM(char** arr) {
 	if (!arr) {
 		throw new std::runtime_error("no RAM available");
@@ -94,40 +100,28 @@ const char symbol, const char empty, char& step, Point2D& p2d)
 			return false;
 		}
 		arrGrid[Row][Col] = empty;
-		Row++;
-		step = arrGrid[Row][Col];
-		arrGrid[Row][Col] = symbol;
-		return true;
+		return modifyCell(arrGrid, ++Row, Col, step, symbol);
 	case A:
 		if (checkGrid(Col - 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
 		arrGrid[Row][Col] = empty;
-		Col--;
-		step = arrGrid[Row][Col];
-		arrGrid[Row][Col] = symbol;
-		return true;
+		return modifyCell(arrGrid, Row, --Col, step, symbol);
 	case S:
 		if (checkGrid(Row - 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
 		arrGrid[Row][Col] = empty;
-		Row--;
-		step = arrGrid[Row][Col];
-		arrGrid[Row][Col] = symbol;
-		return true;
+		return modifyCell(arrGrid, --Row, Col, step, symbol);
 	case D:
 		if (checkGrid(Col + 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
 		arrGrid[Row][Col] = empty;
-		Col++;
-		step = arrGrid[Row][Col];
-		arrGrid[Row][Col] = symbol;
-		return true;
+		return modifyCell(arrGrid, Row, ++Col, step, symbol);
 	case Z:
 		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
 		p2d.decreaseArrRowCol();

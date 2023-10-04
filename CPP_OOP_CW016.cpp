@@ -16,8 +16,8 @@ int main()
 
     symbolStep = arrGrid[row][col];
     arrGrid[row][col] = symbolPlayer;
-    arrGrid[1][1] = symbolPrize;
-    //arrGrid[randomCell(sizeGrid, sizeOffset)][randomCell(sizeGrid, sizeOffset)] = symbolPrize;
+    //arrGrid[1][1] = symbolPrize;
+    arrGrid[randomCell(sizeGrid, sizeOffset)][randomCell(sizeGrid, sizeOffset)] = symbolPrize;
 
     do {
         showGrid(arrGrid, sizeGrid, symbolCell);
