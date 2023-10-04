@@ -128,6 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CPP_OOP_CW016.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="menuWASD.cpp" />
     <ClCompile Include="Point2D.cpp" />
   </ItemGroup>
   <ItemGroup>

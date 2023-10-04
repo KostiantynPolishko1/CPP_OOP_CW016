@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef POIN2D_H
+#ifndef POINT2D_H
 #define POINT2D_H
 
 class Point2D final
@@ -14,9 +14,10 @@ private:
 protected:
 	void incrementCount();
 	void decreaseCount();
+	void resetRow();
+	void resetCol();
 	short** initArrRowCol();
 	void copyArrRowCol(short** arr, short** arr2, short count);
-	void deleteArrRowCol(short** arr, short count);
 
 public:
 	Point2D() : _row(0), _col(0), _count(1)
@@ -45,7 +46,7 @@ public:
 		_arrRowCol[0][1] = p2D._col;
 	}
 
-	~Point2D() 
+	/*~Point2D() 
 	{
 		for (short i = 0; i < _count; i++) {
 			delete[] _arrRowCol[i];
@@ -53,14 +54,20 @@ public:
 		}
 		delete[] _arrRowCol;
 		_arrRowCol = nullptr;
-	}
+	}*/
 
 	short getRow() const;
 	short getCol() const;
+	short getCount() const;
+	short** getArrRowCol() const;
 
-	void setRow(short Row);
-	void setCol(short Col);
+	void setRow();
+	void setCol();
 
+	void dsetRow();
+	void dsetCol();
+
+	void deleteArrRowCol(short** arr, short count);
 	void increaseArrRowCol();
 	void decreaseArrRowCol();
 }
