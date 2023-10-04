@@ -16,9 +16,9 @@ enum WASD {
     EXIT
 }
 ;
-inline bool modifyCell(char** arrGrid, const short &Row, const short &Col, char& step, const char& symbol) {
-	step = arrGrid[Row][Col];
-	arrGrid[Row][Col] = symbol;
+inline bool modifyCell(char** arrGrid, Point2D& p2d, char& step, const char& symbol) {
+	step = arrGrid[p2d.getRow()][p2d.getCol()];
+	arrGrid[p2d.getRow()][p2d.getCol()] = symbol;
 	return true;
 }
 ;
@@ -88,40 +88,47 @@ inline bool checkGrid(short value, short sizeGrid){
     return false;
 }
 ;
-bool stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
+bool stepByGrid(short ind, char** arrGrid, const short sizeGrid,
 const char symbol, const char empty, char& step, Point2D& p2d)
 {
-
 	switch (ind) 
 	{
 	case W:
-		if (checkGrid(Row + 1, sizeGrid)) {
+		if (checkGrid(p2d.getRow() + 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
-		arrGrid[Row][Col] = empty;
-		return modifyCell(arrGrid, ++Row, Col, step, symbol);
+		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
+		p2d.setRow();
+		return modifyCell(arrGrid, p2d, step, symbol);
+
 	case A:
-		if (checkGrid(Col - 1, sizeGrid)) {
+		if (checkGrid(p2d.getCol() - 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
-		arrGrid[Row][Col] = empty;
-		return modifyCell(arrGrid, Row, --Col, step, symbol);
+		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
+		p2d.dsetCol();
+		return modifyCell(arrGrid, p2d, step, symbol);
+
 	case S:
-		if (checkGrid(Row - 1, sizeGrid)) {
+		if (checkGrid(p2d.getRow() - 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
-		arrGrid[Row][Col] = empty;
-		return modifyCell(arrGrid, --Row, Col, step, symbol);
+		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
+		p2d.dsetRow();
+		return modifyCell(arrGrid, p2d, step, symbol);
+
 	case D:
-		if (checkGrid(Col + 1, sizeGrid)) {
+		if (checkGrid(p2d.getCol() + 1, sizeGrid)) {
 			cout << "\n\tERROR!\n";
 			return false;
 		}
-		arrGrid[Row][Col] = empty;
-		return modifyCell(arrGrid, Row, ++Col, step, symbol);
+		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
+		p2d.setCol();
+		return modifyCell(arrGrid, p2d, step, symbol);
+
 	case Z:
 		arrGrid[p2d.getRow()][p2d.getCol()] = empty;
 		p2d.decreaseArrRowCol();

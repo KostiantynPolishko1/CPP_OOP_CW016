@@ -11,12 +11,8 @@ int main()
     Point2D p2d;
     Point2D p2d_copy(p2d);
 
-    row = p2d_copy.getRow();
-    col = p2d_copy.getCol();
-
-    symbolStep = arrGrid[row][col];
-    arrGrid[row][col] = symbolPlayer;
-    //arrGrid[1][1] = symbolPrize;
+    symbolStep = arrGrid[p2d_copy.getRow()][p2d_copy.getCol()];
+    arrGrid[p2d_copy.getRow()][p2d_copy.getCol()] = symbolPlayer;
     arrGrid[randomCell(sizeGrid, sizeOffset)][randomCell(sizeGrid, sizeOffset)] = symbolPrize;
 
     do {
@@ -25,17 +21,13 @@ int main()
         indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
         system("CLS");
 
-        if (!stepByGrid(ind, arrGrid, sizeGrid, row, col, symbolPlayer, symbolCell, symbolStep, p2d_copy))
+        if (!stepByGrid(ind, arrGrid, sizeGrid, symbolPlayer, symbolCell, symbolStep, p2d_copy))
             continue;
 
         if (ind == EXIT) {
-            //p2d.~Point2D();
-            //p2d_copy.~Point2D();
             break;
         }
         else if (ind != Z) {
-            p2d_copy.setRow(row);
-            p2d_copy.setCol(col);
             p2d_copy.increaseArrRowCol();
         }
 

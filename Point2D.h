@@ -61,8 +61,11 @@ public:
 	short getCount() const;
 	short** getArrRowCol() const;
 
-	void setRow(short Row);
-	void setCol(short Col);
+	void setRow();
+	void setCol();
+
+	void dsetRow();
+	void dsetCol();
 
 	void deleteArrRowCol(short** arr, short count);
 	void increaseArrRowCol();
