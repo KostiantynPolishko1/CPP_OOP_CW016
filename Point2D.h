@@ -14,6 +14,8 @@ private:
 protected:
 	void incrementCount();
 	void decreaseCount();
+	void resetRow();
+	void resetCol();
 	short** initArrRowCol();
 	void copyArrRowCol(short** arr, short** arr2, short count);
 

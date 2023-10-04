@@ -16,11 +16,13 @@ inline void checkRAM(short* arr) {
 }
 ;
 short Point2D::getRow() const {
-	return _arrRowCol[_count-1][0];
+	//return _arrRowCol[_count-1][0];
+	return _row;
 }
 ;
 short Point2D::getCol() const {
-	return _arrRowCol[_count - 1][1];
+	//return _arrRowCol[_count - 1][1];
+	return _col;
 }
 ;
 void Point2D::setRow(short row) {
@@ -29,6 +31,14 @@ void Point2D::setRow(short row) {
 ;
 void Point2D::setCol(short col) {
 	_col = col;
+}
+;
+void Point2D::resetRow() {
+	_row = _arrRowCol[_count - 1][0];
+}
+;
+void Point2D::resetCol() {
+	_col = _arrRowCol[_count - 1][1];
 }
 ;
 short Point2D::getCount() const {
@@ -114,6 +124,8 @@ void Point2D::decreaseArrRowCol()
 		_arrRowCol = initArrRowCol();
 
 		copyArrRowCol(_arrRowCol, arrTemp, _count);
+		resetRow();
+		resetCol();
 
 		deleteArrRowCol(arrTemp, _count);
 	}
