@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef POIN2D_H
+#ifndef POINT2D_H
 #define POINT2D_H
 
 class Point2D final

@@ -13,27 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Point">
+      <UniqueIdentifier>{2263fb9e-5a7e-4cbe-9f8f-4f6f3ed34d6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Point">
+      <UniqueIdentifier>{9b2c8de8-6f4b-4cc7-a8ad-b0322b24d624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameOperation">
+      <UniqueIdentifier>{650de50e-dc9d-4a6d-b212-3341d4a7ddbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameOperation">
+      <UniqueIdentifier>{80423328-12fc-49fd-8ad6-dfbbe7d8ca8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPP_OOP_CW016.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\GameOperation</Filter>
+    </ClCompile>
+    <ClCompile Include="menuWASD.cpp">
+      <Filter>Source Files\GameOperation</Filter>
+    </ClCompile>
     <ClCompile Include="Point2D.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Point</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Point2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="menuWASD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Data.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameOperation</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameOperation</Filter>
+    </ClInclude>
+    <ClInclude Include="menuWASD.h">
+      <Filter>Header Files\GameOperation</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2D.h">
+      <Filter>Header Files\Point</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
