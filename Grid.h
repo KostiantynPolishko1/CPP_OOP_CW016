@@ -61,7 +61,7 @@ inline bool checkGrid(short value, short sizeGrid){
 }
 ;
 bool stepByGrid(short ind, char** arrGrid, const short sizeGrid, short& Row, short& Col,
-const char symbol, const char empty, Point2D& p2d)
+const char symbol, const char empty, char& step, Point2D& p2d)
 {
 
 	switch (ind) 
@@ -73,6 +73,7 @@ const char symbol, const char empty, Point2D& p2d)
 		}
 		arrGrid[Row][Col] = empty;
 		Row++;
+		step = arrGrid[Row][Col];
 		arrGrid[Row][Col] = symbol;
 		return true;
 	case A:
@@ -82,6 +83,7 @@ const char symbol, const char empty, Point2D& p2d)
 		}
 		arrGrid[Row][Col] = empty;
 		Col--;
+		step = arrGrid[Row][Col];
 		arrGrid[Row][Col] = symbol;
 		return true;
 	case S:
@@ -91,6 +93,7 @@ const char symbol, const char empty, Point2D& p2d)
 		}
 		arrGrid[Row][Col] = empty;
 		Row--;
+		step = arrGrid[Row][Col];
 		arrGrid[Row][Col] = symbol;
 		return true;
 	case D:
@@ -100,6 +103,7 @@ const char symbol, const char empty, Point2D& p2d)
 		}
 		arrGrid[Row][Col] = empty;
 		Col++;
+		step = arrGrid[Row][Col];
 		arrGrid[Row][Col] = symbol;
 		return true;
 	case Z:

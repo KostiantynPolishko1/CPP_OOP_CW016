@@ -15,8 +15,10 @@ int main()
     row = p2d_copy.getRow();
     col = p2d_copy.getCol();
 
+    symbolStep = arrGrid[row][col];
     arrGrid[row][col] = symbolPlayer;
-    arrGrid[randomCell(sizeGrid, sizeOffset)][randomCell(sizeGrid, sizeOffset)] = symbolPrize;
+    arrGrid[1][1] = symbolPrize;
+    //arrGrid[randomCell(sizeGrid, sizeOffset)][randomCell(sizeGrid, sizeOffset)] = symbolPrize;
 
     do {
         showGrid(arrGrid, sizeGrid, symbolCell);
@@ -24,7 +26,7 @@ int main()
         indexMenu(ind, sizeof(arrWASD) / sizeof(arrWASD[0]));
         system("CLS");
 
-        if (!stepByGrid(ind, arrGrid, sizeGrid, row, col, symbolPlayer, symbolCell, p2d_copy))
+        if (!stepByGrid(ind, arrGrid, sizeGrid, row, col, symbolPlayer, symbolCell, symbolStep, p2d_copy))
             continue;
 
         if (ind == EXIT) {
@@ -38,7 +40,7 @@ int main()
             p2d_copy.increaseArrRowCol();
         }
 
-    } while (arrGrid[row][col] != symbolPrize);
+    } while (symbolStep != symbolPrize);
 
     showGrid(arrGrid, sizeGrid, symbolCell);
 
